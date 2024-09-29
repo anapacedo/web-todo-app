@@ -9,11 +9,14 @@ def add_todo():
     st.session_state["new_todo"] = ""
 
 
+st.set_page_config(layout="wide")
+
 todos = functions.get_todos()
 
 st.title("My To-Do App")
 st.subheader("This is my to-do app.")
-st.write("I built it in Python.")
+st.write("I built it in <b>Python.</b>",
+         unsafe_allow_html=True)
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
@@ -26,5 +29,3 @@ for index, todo in enumerate(todos):
 st.text_input(label="Add new to-do:",
               on_change=add_todo,
               key='new_todo')
-
-
